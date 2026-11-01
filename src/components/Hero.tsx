@@ -16,14 +16,14 @@ function CopyIcon() {
 }
 
 export function Hero() {
-  const { displayed, done } = useTypewriter(SITE.typewriter);
+  const { displayed, done } = useTypewriter(SITE.typewriter, 30, 1100);
   const [showActions, setShowActions] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Les boutons apparaissent 400 ms après le chargement, sans attendre la
+  // Les boutons apparaissent 1 s après le chargement, sans attendre la
   // fin de la machine à écrire.
   useEffect(() => {
-    const timer = setTimeout(() => setShowActions(true), 400);
+    const timer = setTimeout(() => setShowActions(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,31 +48,43 @@ export function Hero() {
   return (
     <section className="relative z-[1] flex h-screen flex-col justify-end overflow-hidden px-5 pb-12 sm:px-8 md:justify-center md:pb-0 md:pl-[6vw] md:pr-0">
       <div className="relative z-10 w-full md:max-w-[46vw]">
-        <p
-          className="pointer-events-none mb-5 select-none sm:mb-8"
-          style={{ ...textStyle, fontSize: 'clamp(17px, 1.6vw, 30px)', lineHeight: 1.3, filter: 'blur(4px)' }}
-          aria-hidden>
-          {SITE.intro[0]}
-          <br />
-          {SITE.intro[1]}
-        </p>
-        {/* Texte complet pour les lecteurs d'écran et le référencement. */}
-        <h1 className="sr-only">
-          {SITE.intro.join(' ')} — {SITE.typewriter}
+        {/* Étiquette */}
+        <div className="blur-word mb-5 sm:mb-7" style={{ animationDelay: '0.05s' }}>
+          <p
+            className={`inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5 text-[13px] backdrop-blur-sm sm:text-[15px] ${dark ? 'border-white/30 bg-white/10 text-white' : 'border-black/15 bg-black/5 text-black'}`}>
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#7dffa6] opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#7dffa6]" />
+            </span>
+            {SITE.role}
+          </p>
+        </div>
+
+        {/* Titre : les mots apparaissent du flou au net. */}
+        <h1
+          className="mb-5 font-medium sm:mb-7"
+          style={{ ...textStyle, fontSize: 'clamp(40px, 5.2vw, 96px)', lineHeight: 1.02, letterSpacing: '-0.03em', fontFamily: 'var(--font-heading)' }}>
+          {SITE.title.split(' ').map((word, index) => (
+            <span key={index} className="blur-word" style={{ animationDelay: `${0.2 + index * 0.12}s` }}>
+              {word}
+              {'\u00a0'}
+            </span>
+          ))}
+          <span className="sr-only"> — {SITE.role}. {SITE.typewriter}</span>
         </h1>
 
-        {/* Le texte complet, invisible, réserve la place : la mise en page
-            ne bouge pas pendant que la machine à écrire tape. */}
+        {/* Sous-titre tapé à la machine. Le texte complet, invisible,
+            réserve la place pour que la page ne bouge pas. */}
         <p
-          className="mb-8 grid font-medium sm:mb-10"
-          style={{ ...textStyle, fontSize: 'clamp(30px, 3.6vw, 68px)', lineHeight: 1.08, letterSpacing: '-0.025em', fontFamily: 'var(--font-heading)' }}
+          className="mb-8 grid max-w-[34em] sm:mb-10"
+          style={{ ...textStyle, fontSize: 'clamp(17px, 1.45vw, 26px)', lineHeight: 1.4, opacity: 0.9 }}
           aria-hidden>
           <span className="invisible col-start-1 row-start-1">{SITE.typewriter}</span>
           <span className="col-start-1 row-start-1">
             {displayed}
             {!done ? (
               <span
-                className={`ml-[3px] inline-block h-[0.9em] w-[3px] align-baseline ${dark ? 'bg-white' : 'bg-black'}`}
+                className={`ml-[2px] inline-block h-[1em] w-[2px] align-middle ${dark ? 'bg-white' : 'bg-black'}`}
                 style={{ animation: 'blink 1s step-end infinite' }}
               />
             ) : null}

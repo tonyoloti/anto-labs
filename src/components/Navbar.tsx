@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { SITE } from '../config';
-import { GitHubIcon } from './Icons';
+import { GitHubIcon, LinkedInIcon } from './Icons';
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -50,6 +50,16 @@ export function Navbar() {
             className="transition-opacity hover:opacity-60">
             <GitHubIcon className="h-6 w-6" />
           </a>
+          {SITE.links.linkedin ? (
+            <a
+              href={SITE.links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="transition-opacity hover:opacity-60">
+              <LinkedInIcon className="h-[22px] w-[22px]" />
+            </a>
+          ) : null}
           <a href={contact} className={`rounded-full border px-5 py-2 text-[16px] transition-colors xl:text-[18px] ${onVideo ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'}`}>
             Get in touch
           </a>
@@ -78,6 +88,16 @@ export function Navbar() {
         <a href={contact} onClick={() => setOpen(false)} className="text-[32px] font-medium text-black underline underline-offset-2">
           Get in touch
         </a>
+        <div className="flex gap-6 text-black">
+          <a href={SITE.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+            <GitHubIcon className="h-7 w-7" />
+          </a>
+          {SITE.links.linkedin ? (
+            <a href={SITE.links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <LinkedInIcon className="h-7 w-7" />
+            </a>
+          ) : null}
+        </div>
       </div>
     </>
   );

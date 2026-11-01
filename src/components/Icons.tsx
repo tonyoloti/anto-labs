@@ -24,3 +24,11 @@ export function MailIcon({ className = '' }: { className?: string }) {
     </svg>
   );
 }
+
+export function LinkedInIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
+      <path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85V1.15zM4.94 13.4V6.17h-2.4v7.23h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.35-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.02zm4.93 8.22V9.36c0-.21.02-.43.08-.58.17-.43.57-.88 1.24-.88.87 0 1.22.66 1.22 1.64v3.86h2.4V9.25c0-2.22-1.18-3.25-2.77-3.25-1.29 0-1.86.71-2.18 1.21v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.23 0 7.23h2.41z" />
+    </svg>
+  );
+}
