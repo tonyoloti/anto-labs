@@ -7,8 +7,10 @@ import { Projects } from './components/Projects';
 import { ScrubScene } from './components/ScrubScene';
 import { ScrubVideo } from './components/ScrubVideo';
 import { SITE } from './config';
+import { useSmoothAnchors } from './hooks/useSmoothAnchors';
 
 export default function App() {
+  useSmoothAnchors();
   return (
     <>
       {SITE.heroVideo ? <ScrubVideo src={`./${SITE.heroVideo}`} /> : <ScrubScene />}
