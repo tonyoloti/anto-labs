@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { SITE } from '../config';
-import { ArrowIcon, GitHubIcon, MailIcon } from './Icons';
+import { ArrowIcon, GitHubIcon, MailIcon, LinkedInIcon } from './Icons';
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -53,8 +53,8 @@ export function Contact() {
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3.5 text-[17px] transition-colors hover:bg-white hover:text-black">
+              <LinkedInIcon />
               LinkedIn
-              <ArrowIcon />
             </a>
           ) : null}
         </div>

@@ -9,8 +9,8 @@ export const SITE = {
 
   links: {
     github: 'https://github.com/tonyoloti',
-    // À compléter : laisse vide pour masquer le lien.
-    linkedin: '',
+    // Laisse vide pour masquer le lien.
+    linkedin: 'https://www.linkedin.com/in/antoine-mardon/',
   },
 
   /**
@@ -32,13 +32,16 @@ export const SITE = {
     { label: 'Contact', href: '#contact' },
   ],
 
-  intro: ["Hey there, I'm Anto,", 'AI engineer & founder of Bluevolt Technology'],
+  /** Petite étiquette au-dessus du titre, puis le titre lui-même. */
+  role: 'AI engineer · Founder of Bluevolt Technology',
+  title: "Hey there, I'm Anto.",
+  /** Sous-titre, tapé lettre par lettre. */
   typewriter: 'I build AI products and apps people actually use. So, what are we building?',
 
   actions: [
     { label: 'See my projects', href: '#projects' },
     { label: 'GitHub', href: 'https://github.com/tonyoloti' },
-    { label: 'About me', href: '#about' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/antoine-mardon/' },
   ],
 
   about: {
