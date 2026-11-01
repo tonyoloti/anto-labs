@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SITE } from '../config';
 import { GitHubIcon } from './Icons';
@@ -22,9 +22,9 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 z-10 flex w-full items-center justify-between px-5 py-4 transition-colors duration-300 sm:px-8 sm:py-5 ${scrolled ? 'bg-[#f5f1ea]/85 backdrop-blur-md' : ''}`}>
+        className={`fixed top-0 left-0 z-10 flex w-full items-center justify-between px-5 py-4 transition-colors duration-300 sm:px-8 sm:py-5 md:grid md:grid-cols-[1fr_auto_1fr] md:px-[6vw] md:py-7 ${scrolled ? 'bg-[#f5f1ea]/85 backdrop-blur-md' : ''}`}>
         <a href="#" className={`relative z-20 flex items-center gap-3 transition-colors ${open ? 'text-black' : ink}`}>
-          <span className="text-[21px] tracking-tight sm:text-[26px]" style={{ fontFamily: 'var(--font-heading)' }}>
+          <span className="text-[21px] tracking-tight sm:text-[26px] xl:text-[28px]" style={{ fontFamily: 'var(--font-heading)' }}>
             {SITE.brand}®
           </span>
           <span className="text-[25px] select-none sm:text-[30px]" style={{ letterSpacing: '-0.02em' }}>
@@ -32,18 +32,16 @@ export function Navbar() {
           </span>
         </a>
 
-        <div className={`hidden text-[23px] md:flex ${ink}`}>
-          {SITE.nav.map((link, index) => (
-            <Fragment key={link.label}>
-              {index > 0 ? <span>,&nbsp;</span> : null}
-              <a href={link.href} className="transition-opacity hover:opacity-60">
-                {link.label}
-              </a>
-            </Fragment>
+        <div className={`hidden items-center gap-12 text-[18px] md:flex lg:gap-16 xl:text-[20px] ${ink}`}>
+          {SITE.nav.map((link) => (
+            <a key={link.label} href={link.href} className="group relative py-1 transition-opacity hover:opacity-80">
+              {link.label}
+              <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-current transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
           ))}
         </div>
 
-        <div className={`hidden items-center gap-5 md:flex ${ink}`}>
+        <div className={`hidden items-center justify-self-end gap-6 md:flex ${ink}`}>
           <a
             href={SITE.links.github}
             target="_blank"
@@ -52,7 +50,7 @@ export function Navbar() {
             className="transition-opacity hover:opacity-60">
             <GitHubIcon className="h-6 w-6" />
           </a>
-          <a href={contact} className="text-[23px] underline underline-offset-2 transition-opacity hover:opacity-60">
+          <a href={contact} className={`rounded-full border px-5 py-2 text-[16px] transition-colors xl:text-[18px] ${onVideo ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'}`}>
             Get in touch
           </a>
         </div>
