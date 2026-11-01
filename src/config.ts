@@ -33,7 +33,7 @@ export const SITE = {
   ],
 
   /** Petite étiquette au-dessus du titre, puis le titre lui-même. */
-  role: 'AI engineer · Open to new opportunities',
+  role: 'AI engineer · LLMs, agents & automation',
   title: "Hey there, I'm Anto.",
   /** Sous-titre, tapé lettre par lettre. */
   typewriter: 'I build AI products and apps people actually use. So, what are we building?',
