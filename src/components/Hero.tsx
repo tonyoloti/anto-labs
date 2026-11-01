@@ -37,7 +37,14 @@ export function Hero() {
     }
   };
 
-  const textStyle = { fontSize: 'clamp(18px, 4vw, 26px)', fontWeight: 400, color: '#000' };
+  const dark = SITE.heroTone === 'dark';
+  const textStyle = {
+    fontSize: 'clamp(18px, 4vw, 26px)',
+    fontWeight: 400,
+    color: dark ? '#fff' : '#000',
+    // Léger halo pour rester lisible quel que soit le passage de la vidéo.
+    textShadow: dark ? '0 1px 12px rgba(0, 0, 0, 0.35)' : undefined,
+  };
 
   return (
     <section className="relative z-[1] flex h-screen flex-col justify-end overflow-hidden px-5 pb-12 sm:px-8 md:justify-center md:px-10 md:pb-0">
@@ -59,7 +66,7 @@ export function Hero() {
           {displayed}
           {!done ? (
             <span
-              className="ml-[2px] inline-block h-[1.1em] w-[2px] bg-black align-middle"
+              className={`ml-[2px] inline-block h-[1.1em] w-[2px] align-middle ${dark ? 'bg-white' : 'bg-black'}`}
               style={{ animation: 'blink 1s step-end infinite' }}
             />
           ) : null}
@@ -80,12 +87,12 @@ export function Hero() {
               {action.label}
             </a>
           ))}
-          {/* Sur fond clair, la pastille « contour » est noire (blanche dans
-              le modèle, qui reposait sur une vidéo sombre). */}
+          {/* Pastille « contour » : blanche sur fond sombre, noire sur fond
+              clair. */}
           <button
             type="button"
             onClick={copyEmail}
-            className={`${PILL} gap-2 border border-black bg-transparent text-black hover:bg-black hover:text-white sm:gap-3`}>
+            className={`${PILL} gap-2 border bg-transparent sm:gap-3 ${dark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'}`}>
             <span>
               {copied ? 'Copied!' : (
                 <>

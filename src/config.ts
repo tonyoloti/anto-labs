@@ -10,7 +10,13 @@ export const SITE = {
    * code (original). Pour utiliser ta propre vidéo, mets le fichier dans
    * `public/` et indique son nom ici, par exemple `'hero.mp4'`.
    */
-  heroVideo: null as string | null,
+  heroVideo: 'hero.mp4' as string | null,
+
+  /**
+   * Couleur du texte posé sur le fond : `light` (texte noir) pour un fond
+   * clair, `dark` (texte blanc) pour un fond sombre ou saturé comme la vidéo.
+   */
+  heroTone: 'dark' as 'light' | 'dark',
 
   nav: [
     { label: 'Projects', href: '#projects' },
