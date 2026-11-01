@@ -83,6 +83,7 @@ export function Hero() {
             <a
               key={action.label}
               href={action.href}
+              {...(action.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
               className={`${PILL} border border-black/10 bg-white text-black hover:bg-black hover:text-white`}>
               {action.label}
             </a>

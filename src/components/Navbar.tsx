@@ -1,17 +1,28 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 import { SITE } from '../config';
+import { GitHubIcon } from './Icons';
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   // Texte blanc sur fond sombre ; noir quand le menu mobile (fond blanc) est ouvert.
-  const ink = SITE.heroTone === 'dark' ? 'text-white' : 'text-black';
-  const bar = SITE.heroTone === 'dark' && !open ? 'bg-white' : 'bg-black';
+  // Une fois la vidéo dépassée, la barre prend un fond clair et du texte noir.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight - 80);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  const onVideo = SITE.heroTone === 'dark' && !scrolled;
+  const ink = onVideo ? 'text-white' : 'text-black';
+  const bar = onVideo && !open ? 'bg-white' : 'bg-black';
   const contact = `mailto:${SITE.email}`;
 
   return (
     <>
-      <nav className="fixed top-0 left-0 z-10 flex w-full items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+      <nav
+        className={`fixed top-0 left-0 z-10 flex w-full items-center justify-between px-5 py-4 transition-colors duration-300 sm:px-8 sm:py-5 ${scrolled ? 'bg-[#f5f1ea]/85 backdrop-blur-md' : ''}`}>
         <a href="#" className={`relative z-20 flex items-center gap-3 transition-colors ${open ? 'text-black' : ink}`}>
           <span className="text-[21px] tracking-tight sm:text-[26px]" style={{ fontFamily: 'var(--font-heading)' }}>
             {SITE.brand}®
@@ -32,11 +43,19 @@ export function Navbar() {
           ))}
         </div>
 
-        <a
-          href={contact}
-          className={`hidden text-[23px] underline underline-offset-2 transition-opacity hover:opacity-60 md:block ${ink}`}>
-          Get in touch
-        </a>
+        <div className={`hidden items-center gap-5 md:flex ${ink}`}>
+          <a
+            href={SITE.links.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="transition-opacity hover:opacity-60">
+            <GitHubIcon className="h-6 w-6" />
+          </a>
+          <a href={contact} className="text-[23px] underline underline-offset-2 transition-opacity hover:opacity-60">
+            Get in touch
+          </a>
+        </div>
 
         <button
           type="button"
