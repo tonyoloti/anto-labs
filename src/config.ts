@@ -5,7 +5,7 @@ export const SITE = {
   brand: 'Anto Labs',
   name: 'Anto',
   email: 'contact@anto-labs.com',
-  company: 'Bluevolt Technology',
+  location: 'Paris, France',
 
   links: {
     github: 'https://github.com/tonyoloti',
@@ -33,7 +33,7 @@ export const SITE = {
   ],
 
   /** Petite étiquette au-dessus du titre, puis le titre lui-même. */
-  role: 'AI engineer · Founder of Bluevolt Technology',
+  role: 'AI engineer · Open to new opportunities',
   title: "Hey there, I'm Anto.",
   /** Sous-titre, tapé lettre par lettre. */
   typewriter: 'I build AI products and apps people actually use. So, what are we building?',
@@ -48,7 +48,7 @@ export const SITE = {
     // Texte provisoire : à remplacer par ta vraie présentation.
     paragraphs: [
       "I'm an AI engineer who likes shipping. I design and build products end to end: from the model or the data pipeline to an interface people enjoy using.",
-      'Through Bluevolt Technology, I publish my own apps. The latest is Mapdex, an offline interactive map and guide for one of the most anticipated games of the decade.',
+      'On the side, I publish my own apps. The latest is Mapdex, an offline interactive map and guide for one of the most anticipated games of the decade.',
     ],
     skills: [
       'Python',
