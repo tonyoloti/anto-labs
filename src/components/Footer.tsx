@@ -7,7 +7,12 @@ export function Footer() {
         <span>
           © {new Date().getFullYear()} {SITE.brand}
         </span>
-        <span>{SITE.location}</span>
+        <span className="flex gap-6">
+          <span>{SITE.location}</span>
+          <a href="legal.html" className="underline-offset-2 transition-colors hover:text-white hover:underline">
+            Legal notice
+          </a>
+        </span>
       </div>
     </footer>
   );
