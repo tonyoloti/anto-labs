@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluevolt Technology — Mobile apps</title>
+    <meta name="description" content="Bluevolt Technology is a French software company that designs and publishes mobile apps, including Mapdex." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <!--
+      Site de la société, en HTML statique (aucun script, aucune police
+      externe). Publié par Cloudflare Pages depuis le dossier `bluevolt/`.
+    -->
+    <style>
+      :root {
+        --bg: #f7f8fb;
+        --surface: #ffffff;
+        --ink: #0d1424;
+        --muted: #4f5a70;
+        --line: #e3e7ef;
+        --accent: #1f5eff;
+        --accent-ink: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0f19;
+          --surface: #131a29;
+          --ink: #eef2fa;
+          --muted: #a3adc2;
+          --line: #232c40;
+          --accent: #5b8bff;
+          --accent-ink: #0b0f19;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      a { color: inherit; }
+      .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+      header { border-bottom: 1px solid var(--line); background: var(--surface); }
+      header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+      .logo { font-weight: 700; letter-spacing: 0.04em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+      .logo-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 16px; }
+      nav { display: flex; gap: 24px; font-size: 15px; }
+      nav a { text-decoration: none; color: var(--muted); }
+      nav a:hover { color: var(--ink); }
+      .hero { padding-top: 88px; padding-bottom: 72px; }
+      .eyebrow { margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+      h1 { margin: 0 0 20px; font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.025em; max-width: 14em; }
+      .lead { margin: 0; font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 36em; }
+      .btn { display: inline-block; margin-top: 32px; padding: 12px 22px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; }
+      section { padding: 64px 0; border-top: 1px solid var(--line); }
+      h2 { margin: 0 0 28px; font-size: clamp(26px, 3.5vw, 34px); letter-spacing: -0.02em; }
+      .card { display: flex; gap: 24px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+      .card img { width: 96px; height: 96px; border-radius: 22px; flex: none; }
+      .card h3 { margin: 0 0 6px; font-size: 22px; }
+      .card p { margin: 0 0 14px; color: var(--muted); }
+      .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+      .tag { font-size: 13px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+      .links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 15px; }
+      .links a { font-weight: 600; color: var(--accent); text-decoration: none; }
+      .links span { color: var(--muted); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+      .grid p { margin: 0; color: var(--muted); }
+      .grid strong { display: block; color: var(--ink); margin-bottom: 4px; }
+      dl { display: grid; grid-template-columns: max-content 1fr; gap: 10px 24px; margin: 0; }
+      dt { color: var(--muted); }
+      dd { margin: 0; }
+      footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+      footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+      @media (max-width: 600px) {
+        nav { gap: 16px; font-size: 14px; }
+        .card { flex-direction: column; }
+        dl { grid-template-columns: 1fr; gap: 2px; }
+        dd { margin-bottom: 10px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <a class="logo" href="./"><span class="logo-mark">⚡</span>BLUEVOLT TECHNOLOGY</a>
+        <nav>
+          <a href="#apps">Apps</a>
+          <a href="#company">Company</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap hero">
+        <p class="eyebrow">Software company · France</p>
+        <h1>We design and publish mobile apps.</h1>
+        <p class="lead">
+          Bluevolt Technology is an independent French software company. We build simple, fast and privacy-friendly
+          apps for iPhone and Android, from the first idea to the store release.
+        </p>
+        <a class="btn" href="#apps">See our apps</a>
+      </div>
+
+      <section id="apps">
+        <div class="wrap">
+          <h2>Our apps</h2>
+          <article class="card">
+            <img src="mapdex-icon.png" alt="Mapdex app icon" width="96" height="96" />
+            <div>
+              <h3>Mapdex</h3>
+              <p>
+                An unofficial companion guide for open-world games: characters, categories, tips and a countdown to
+                release, with an interactive map coming with the game. Works offline, with no account, no ads and no
+                tracking.
+              </p>
+              <div class="tags">
+                <span class="tag">Android</span>
+                <span class="tag">iOS (coming soon)</span>
+                <span class="tag">Offline</span>
+                <span class="tag">No tracking</span>
+              </div>
+              <div class="links">
+                <a href="https://play.google.com/store/apps/details?id=com.bluevolt.mapdex">Google Play →</a>
+                <a href="privacy.html">Privacy policy →</a>
+                <span>App Store: coming soon</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="company">
+        <div class="wrap">
+          <h2>Company</h2>
+          <div class="grid">
+            <p><strong>Who we are</strong>Bluevolt Technology was founded in 2025 by Antoine Mardon, AI engineer and app developer.</p>
+            <p><strong>What we do</strong>Mobile app development and publishing, with a focus on clean design, offline use and AI-powered features.</p>
+            <p><strong>Where we are</strong>Montesson, Île-de-France, France.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap">
+          <h2>Contact</h2>
+          <p class="lead">Questions, support or partnership requests: <a href="mailto:contact@bluevolt.fr">contact@bluevolt.fr</a></p>
+        </div>
+      </section>
+
+      <section id="legal">
+        <div class="wrap">
+          <h2>Legal information</h2>
+          <dl>
+            <dt>Company name</dt><dd>BLUEVOLT TECHNOLOGY</dd>
+            <dt>Legal form</dt><dd>SASU (société par actions simplifiée unipersonnelle), share capital €1</dd>
+            <dt>SIREN</dt><dd>944 798 545 — RCS Versailles</dd>
+            <dt>VAT number</dt><dd>FR66 944 798 545</dd>
+            <dt>D-U-N-S</dt><dd>284618507</dd>
+            <dt>Registered office</dt><dd>12 rue des Bas Sablons, 78360 Montesson, France</dd>
+            <dt>Publication director</dt><dd>Antoine Mardon, President</dd>
+            <dt>Contact</dt><dd><a href="mailto:contact@bluevolt.fr">contact@bluevolt.fr</a></dd>
+            <dt>Hosting</dt><dd>Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>© 2026 BLUEVOLT TECHNOLOGY</span>
+        <span>This site uses no cookies and collects no personal data.</span>
+      </div>
+    </footer>
+  </body>
+</html>
