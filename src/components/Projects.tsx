@@ -1,7 +1,9 @@
 import { PROJECTS, SITE, type Project } from '../config';
+import { useLang } from '../i18n';
 import { ArrowIcon, GitHubIcon } from './Icons';
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { lang, t } = useLang();
   return (
     <article className="group flex flex-col overflow-hidden rounded-[28px] bg-white shadow-[0_1px_0_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1">
       <div
@@ -32,7 +34,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <h3 className="text-[28px] leading-tight tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
           {project.name}
         </h3>
-        <p className="mt-3 text-[16px] leading-relaxed text-black/65">{project.summary}</p>
+        <p className="mt-3 text-[16px] leading-relaxed text-black/65">{project.summary[lang]}</p>
 
         <ul className="mt-5 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
@@ -60,10 +62,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-2.5 text-[14px] text-black transition-colors hover:bg-black hover:text-white">
               <GitHubIcon className="h-4 w-4" />
-              View code
+              {t.projects.viewCode}
             </a>
-          ) : project.note ? (
-            <span className="text-[14px] text-black/45">{project.note}</span>
+          ) : project.privateCode ? (
+            <span className="text-[14px] text-black/45">{t.projects.privateCode}</span>
           ) : null}
         </div>
       </div>
@@ -72,16 +74,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export function Projects() {
+  const { t } = useLang();
   return (
     <section id="projects" className="relative z-[2] bg-[#f5f1ea] px-5 py-24 text-black sm:px-8 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6 md:mb-16">
           <div>
-            <p className="mb-3 text-[14px] tracking-[0.18em] text-[#d61f26] uppercase">Selected work</p>
+            <p className="mb-3 text-[14px] tracking-[0.18em] text-[#d61f26] uppercase">{t.projects.eyebrow}</p>
             <h2
               className="text-[44px] leading-[1.02] tracking-tight sm:text-[64px]"
               style={{ fontFamily: 'var(--font-heading)' }}>
-              Projects
+              {t.projects.title}
             </h2>
           </div>
           <a
@@ -90,7 +93,7 @@ export function Projects() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 text-[17px] underline underline-offset-4 transition-opacity hover:opacity-60">
             <GitHubIcon className="h-[18px] w-[18px]" />
-            All my code on GitHub
+            {t.projects.allCode}
           </a>
         </div>
 

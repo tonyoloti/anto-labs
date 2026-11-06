@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { SITE } from '../config';
 import { useTypewriter } from '../hooks/useTypewriter';
+import { useLang } from '../i18n';
 
 const PILL =
   'inline-flex items-center justify-center rounded-full text-[14px] sm:text-[16px] xl:text-[18px] px-5 xl:px-6 py-[0.5em] whitespace-nowrap transition-colors duration-200';
@@ -16,7 +17,9 @@ function CopyIcon() {
 }
 
 export function Hero() {
-  const { displayed, done } = useTypewriter(SITE.typewriter, 30, 1100);
+  const { lang, t } = useLang();
+  const h = t.hero;
+  const { displayed, done } = useTypewriter(h.typewriter, 30, 1100);
   const [showActions, setShowActions] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -56,7 +59,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#7dffa6] opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#7dffa6]" />
             </span>
-            {SITE.role}
+            {h.role}
           </p>
         </div>
 
@@ -64,13 +67,13 @@ export function Hero() {
         <h1
           className="mb-5 font-medium sm:mb-7"
           style={{ ...textStyle, fontSize: 'clamp(40px, 5.2vw, 96px)', lineHeight: 1.02, letterSpacing: '-0.03em', fontFamily: 'var(--font-heading)' }}>
-          {SITE.title.split(' ').map((word, index) => (
-            <span key={index} className="blur-word" style={{ animationDelay: `${0.2 + index * 0.12}s` }}>
+          {h.title.split(' ').map((word, index) => (
+            <span key={`${lang}-${index}`} className="blur-word" style={{ animationDelay: `${0.2 + index * 0.12}s` }}>
               {word}
               {'\u00a0'}
             </span>
           ))}
-          <span className="sr-only"> — {SITE.role}. {SITE.typewriter}</span>
+          <span className="sr-only"> — {h.role}. {h.typewriter}</span>
         </h1>
 
         {/* Sous-titre tapé à la machine. Le texte complet, invisible,
@@ -79,7 +82,7 @@ export function Hero() {
           className="mb-8 grid max-w-[34em] sm:mb-10"
           style={{ ...textStyle, fontSize: 'clamp(17px, 1.45vw, 26px)', lineHeight: 1.4, opacity: 0.9 }}
           aria-hidden>
-          <span className="invisible col-start-1 row-start-1">{SITE.typewriter}</span>
+          <span className="invisible col-start-1 row-start-1">{h.typewriter}</span>
           <span className="col-start-1 row-start-1">
             {displayed}
             {!done ? (
@@ -100,11 +103,11 @@ export function Hero() {
           }}>
           {SITE.actions.map((action) => (
             <a
-              key={action.label}
+              key={action.key}
               href={action.href}
               {...(action.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
               className={`${PILL} border border-black/10 bg-white text-black hover:bg-black hover:text-white`}>
-              {action.label}
+              {h.actions[action.key]}
             </a>
           ))}
           {/* Pastille « contour » : blanche sur fond sombre, noire sur fond
@@ -114,9 +117,9 @@ export function Hero() {
             onClick={copyEmail}
             className={`${PILL} gap-2 border bg-transparent sm:gap-3 ${dark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'}`}>
             <span>
-              {copied ? 'Copied!' : (
+              {copied ? h.copied : (
                 <>
-                  Reach me: <span className="underline underline-offset-1">{SITE.email}</span>
+                  {h.reachMe} <span className="underline underline-offset-1">{SITE.email}</span>
                 </>
               )}
             </span>

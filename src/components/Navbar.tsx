@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 
 import { SITE } from '../config';
+import { LangSwitch, useLang } from '../i18n';
 import { GitHubIcon, LinkedInIcon } from './Icons';
 
 export function Navbar() {
+  const { t } = useLang();
+  const nav = [
+    { label: t.nav.projects, href: '#projects' },
+    { label: t.nav.about, href: '#about' },
+    { label: t.nav.contact, href: '#contact' },
+  ];
   const [open, setOpen] = useState(false);
   // Texte blanc sur fond sombre ; noir quand le menu mobile (fond blanc) est ouvert.
   // Une fois la vidéo dépassée, la barre prend un fond clair et du texte noir.
@@ -33,8 +40,8 @@ export function Navbar() {
         </a>
 
         <div className={`hidden items-center gap-12 text-[18px] md:flex lg:gap-16 xl:text-[20px] ${ink}`}>
-          {SITE.nav.map((link) => (
-            <a key={link.label} href={link.href} className="group relative py-1 transition-opacity hover:opacity-80">
+          {nav.map((link) => (
+            <a key={link.href} href={link.href} className="group relative py-1 transition-opacity hover:opacity-80">
               {link.label}
               <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-current transition-transform duration-300 group-hover:scale-x-100" />
             </a>
@@ -42,6 +49,7 @@ export function Navbar() {
         </div>
 
         <div className={`hidden items-center justify-self-end gap-6 md:flex ${ink}`}>
+          <LangSwitch />
           <a
             href={SITE.links.github}
             target="_blank"
@@ -61,32 +69,35 @@ export function Navbar() {
             </a>
           ) : null}
           <a href={contact} className={`rounded-full border px-5 py-2 text-[16px] transition-colors xl:text-[18px] ${onVideo ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'}`}>
-            Get in touch
+            {t.nav.getInTouch}
           </a>
         </div>
 
+        <div className={`relative z-20 flex items-center gap-4 md:hidden ${open ? 'text-black' : ink}`}>
+          <LangSwitch />
         <button
           type="button"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="relative z-20 flex flex-col gap-[5px] p-1 md:hidden">
+          className="flex flex-col gap-[5px] p-1">
           <span className={`h-[2px] w-6 ${bar} transition-all duration-300 ${open ? 'translate-y-[7px] rotate-45' : ''}`} />
           <span className={`h-[2px] w-6 ${bar} transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
           <span className={`h-[2px] w-6 ${bar} transition-all duration-300 ${open ? '-translate-y-[7px] -rotate-45' : ''}`} />
         </button>
+        </div>
       </nav>
 
       <div
         className="fixed inset-0 z-[9] flex flex-col justify-center gap-8 bg-white/95 px-8 backdrop-blur-sm transition-opacity duration-300 md:hidden"
         style={{ opacity: open ? 1 : 0, pointerEvents: open ? 'auto' : 'none' }}>
-        {SITE.nav.map((link) => (
-          <a key={link.label} href={link.href} onClick={() => setOpen(false)} className="text-[32px] font-medium text-black">
+        {nav.map((link) => (
+          <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="text-[32px] font-medium text-black">
             {link.label}
           </a>
         ))}
         <a href={contact} onClick={() => setOpen(false)} className="text-[32px] font-medium text-black underline underline-offset-2">
-          Get in touch
+          {t.nav.getInTouch}
         </a>
         <div className="flex gap-6 text-black">
           <a href={SITE.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
