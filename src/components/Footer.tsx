@@ -1,6 +1,8 @@
 import { SITE } from '../config';
+import { useLang } from '../i18n';
 
 export function Footer() {
+  const { t } = useLang();
   return (
     <footer className="relative z-[2] bg-black px-5 py-8 text-[14px] text-white/60 sm:px-8 md:px-10">
       <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-4">
@@ -8,9 +10,9 @@ export function Footer() {
           © {new Date().getFullYear()} {SITE.brand}
         </span>
         <span className="flex gap-6">
-          <span>{SITE.location}</span>
+          <span>{t.footer.location}</span>
           <a href="legal.html" className="underline-offset-2 transition-colors hover:text-white hover:underline">
-            Legal notice
+            {t.footer.legal}
           </a>
         </span>
       </div>

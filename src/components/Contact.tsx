@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
 import { SITE } from '../config';
-import { ArrowIcon, GitHubIcon, MailIcon, LinkedInIcon } from './Icons';
+import { useLang } from '../i18n';
+import { GitHubIcon, MailIcon, LinkedInIcon } from './Icons';
 
 export function Contact() {
+  const { t } = useLang();
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -19,11 +21,11 @@ export function Contact() {
   return (
     <section id="contact" className="relative z-[2] bg-[#d61f26] px-5 py-24 text-white sm:px-8 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-3 text-[14px] tracking-[0.18em] text-white/70 uppercase">Contact</p>
+        <p className="mb-3 text-[14px] tracking-[0.18em] text-white/70 uppercase">{t.contact.eyebrow}</p>
         <h2
           className="max-w-4xl text-[48px] leading-[1] tracking-tight sm:text-[84px]"
           style={{ fontFamily: 'var(--font-heading)' }}>
-          Got a project in mind? Let's talk.
+          {t.contact.title}
         </h2>
 
         <div className="mt-12 flex flex-wrap items-center gap-3">
@@ -37,7 +39,7 @@ export function Contact() {
             type="button"
             onClick={copy}
             className="rounded-full border border-white/60 px-6 py-3.5 text-[17px] transition-colors hover:bg-white hover:text-black">
-            {copied ? 'Copied!' : 'Copy email'}
+            {copied ? t.contact.copied : t.contact.copy}
           </button>
           <a
             href={SITE.links.github}
